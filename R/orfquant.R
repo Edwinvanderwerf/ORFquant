@@ -1510,6 +1510,11 @@ select_quantify_ORFs<-function(results_ORFs,P_sites,P_sites_uniq,cutoff_cums=NA,
   while(length(orf_del)>0){
     
     feats<-feats[!names(feats)%in%orf_del]
+    
+    if(length(feats)==0){  
+      break  
+    }  
+    
     nms<-sapply(feats,length)
     nms<-rep(names(nms),nms)
     feats<-unlist(GRangesList(unlist(feats)))
