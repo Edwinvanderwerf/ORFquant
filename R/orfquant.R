@@ -3184,8 +3184,7 @@ run_ORFquant<-function(for_ORFquant_file,annotation_file,n_cores,prefix=for_ORFq
   labs_top<-paste(c(0,seq(10,100,by = 10)),"% completed\n",sep = "")
   
   if(n_cores>1){
-    ORFs_found<-foreach(g=(1:length(genes_red)),.packages=c('GenomicRanges')) %dopar%{
-      
+    ORFs_found<-foreach(g=(1:length(genes_red)),.packages=c('GenomicRanges','txdbmaker')) %dopar%{      
       if(g%in%pcts_leng){
         cat(labs_top[pcts_leng==g])
       }
