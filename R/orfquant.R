@@ -3584,7 +3584,7 @@ prepare_annotation_files<-function(annotation_directory,twobit_file=NULL,gtf_fil
   if(create_TxDb){
     cat(paste("Creating the TxDb object ... ",date(),"\n",sep = ""))
     
-    annotation<-makeTxDbFromGFF(file=gtf_file,format="gtf",chrominfo = seqinfotwob)
+    annotation<-txdbmaker::makeTxDbFromGFF(file=gtf_file,format="gtf",chrominfo = seqinfotwob)
     
     saveDb(annotation, file=paste(annotation_directory,"/",basename(gtf_file),"_TxDb",sep=""))
     cat(paste("Creating the TxDb object --- Done! ",date(),"\n",sep = ""))
