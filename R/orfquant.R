@@ -3302,13 +3302,13 @@ run_ORFquant<-function(for_ORFquant_file,annotation_file,n_cores,prefix=for_ORFq
   
   
   x<-ORFquant_results$ORFs_readthroughs
-  seqf<-Seqinfo(seqnames = names(GTF_annotation$exons_txs),seqlengths = sum(width(GTF_annotation$exons_txs)),isCircular = NA,genome = NA)
+  seqf<-GenomeInfoDb::Seqinfo(seqnames = names(GTF_annotation$exons_txs),seqlengths = sum(width(GTF_annotation$exons_txs)),isCircular = NA,genome = NA)
   x@seqnames<-Rle(factor(as.character(x@seqnames),levels = seqlevels(seqf)))
   x@seqinfo<-seqf
   ORFquant_results$ORFs_readthroughs<-x
   
   x<-ORFquant_results$ORFs_tx
-  seqf<-Seqinfo(seqnames = names(GTF_annotation$exons_txs),seqlengths = sum(width(GTF_annotation$exons_txs)),isCircular = NA,genome = NA)
+  seqf<-GenomeInfoDb::Seqinfo(seqnames = names(GTF_annotation$exons_txs),seqlengths = sum(width(GTF_annotation$exons_txs)),isCircular = NA,genome = NA)
   x@seqnames<-Rle(factor(as.character(x@seqnames),levels = seqlevels(seqf)))
   x@seqinfo<-seqf
   aa<-suppressWarnings(GRanges(x$longest_ORF))
